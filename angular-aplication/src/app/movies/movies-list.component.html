@@ -1,0 +1,42 @@
+<h2>Movies List</h2>
+
+<div class="form-group row">
+  <label class="col-sm-2 col-from-label">Filter By Name:</label>
+
+  <div class="col-sm-1">
+    <input [(ngModel)]="filter" style="width: 21.25rem;">
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+       <th>Image</th>
+        <th>Name</th>
+        <th>Duration</th>
+        <th>Price</th>
+        <th>Room</th>
+        <th>Date</th>
+        <th>Rating</th>
+        <th>Options</th>
+   </tr>
+  </thead>
+  <!-- let movie criando uma variavel -->
+  <tbody>
+    <tr *ngFor="let movie of filteredMovies">
+        <td><img [src]="movie.imageUrl" width="60" height="75"> </td>
+        <td>{{ movie.name | primeiraMaiuscula}}</td>
+        <td>{{ movie.duration }}</td>
+        <td>{{ movie.price }}</td>
+        <td>{{ movie.room | lowercase | replace: '-': '/'}}</td>
+        <td>{{ movie.date | date: 'dd/MM/yyyy'}}</td>
+        <td><app-star [rating]="movie.rating"></app-star> </td>
+        <td>
+          <a [routerLink]="['/movies/info', movie.id]" class="btn btn-primary">Edit</a>
+          <button (click)="deleteById(movie.id)" class="btn btn-danger" style="margin-left: 0.9375rem;">Delete</button>
+        </td>
+
+    </tr>
+  </tbody>
+
+</table>

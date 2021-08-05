@@ -1,0 +1,73 @@
+<h2>Movie Info</h2>
+<hr size="4">
+
+<form #movieForm="ngForm" *ngIf="movie">
+
+  <div class="form-group row">
+      <label class="col-sm-2 col-from-label">Name:</label>
+      <div class="col-sm-1">
+          <input [(ngModel)]="movie.name" required name="name" #movieName="ngModel" [ngClass]="{'is-invalid': movieName.invalid}" class="form-control" style="width: 21.25rem;">
+          <div class="invalid-feedback" style="width: 21.25rem">
+              <span>Movie name is required</span>
+          </div>
+      </div>
+  </div>
+    <!-- {{movieName.value}} -->
+    <!-- {{movieName.valid}} -->
+    <!-- {{movieName.invalid}} -->
+
+
+  <div class="form-group row">
+      <label class="col-sm-2 col-from-label">Duration:</label>
+      <div class="col-sm-1">
+          <input [(ngModel)]="movie.duration" required name="duration" type="number" #movieDuration="ngModel" [ngClass]="{'is-invalid': movieDuration.invalid}" class="form-control" style="width: 21.25rem;">
+          <div class="invalid-feedback" style="width: 21.25rem">
+              <span>Movie duration is required</span>
+          </div>
+      </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-from-label">Price:</label>
+    <div class="col-sm-1">
+        <input [(ngModel)]="movie.price" required name="price" type="number" #moviePrice="ngModel" [ngClass]="{'is-invalid': moviePrice.invalid}" class="form-control" style="width: 21.25rem;">
+        <div class="invalid-feedback" style="width: 21.25rem">
+            <span>Movie price is required</span>
+        </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-from-label">Room:</label>
+    <div class="col-sm-1">
+        <input [(ngModel)]="movie.room" required name="room" #movieRoom="ngModel" [ngClass]="{'is-invalid': movieRoom.invalid}" class="form-control" style="width: 21.25rem;">
+        <div class="invalid-feedback" style="width: 21.25rem">
+            <span>Movie room is required</span>
+        </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-from-label">Release Date:</label>
+    <div class="col-sm-1">
+        <input [(ngModel)]="movie.date" required name="date" #movieData="ngModel" [ngClass]="{'is-invalid': movieData.invalid}" class="form-control" style="width: 21.25rem;">
+        <div class="invalid-feedback" style="width: 21.25rem">
+            <span>Movie date is required</span>
+        </div>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-from-label">Rating:</label>
+    <div class="col-sm-1">
+        <input [(ngModel)]="movie.rating" required name="rating" type="number" #movieRating="ngModel" [ngClass]="{'is-invalid': movieRating.invalid}" class="form-control" style="width: 21.25rem;">
+        <div class="invalid-feedback" style="width: 21.25rem">
+            <span>Movie rating is required</span>
+        </div>
+    </div>
+  </div>
+
+<button [disabled]="movieForm.invalid" class="btn btn-primary mr-2" (click)="save()">Save</button>
+<button [routerLink]="['/movies']"  class="btn btn-secondary m-2">Back</button>
+
+</form>
